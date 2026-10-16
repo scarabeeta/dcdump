@@ -1,0 +1,229 @@
+=== 2026-10-09 09:39:36 ========================================================
+redumper (build: b746)
+
+arguments: disc --rings --drive=/dev/sg2 --image-path=/home/user/games/Harusame_Youbi_T20106M/redumper_gd07_sata_c2 --image-name=Harusame_Youbi_T20106M --retries=10 --speed=4 --drive-type=GENERIC --drive-read-method=BE --drive-sector-order=DATA_C2_SUB --drive-read-offset=6 --skip=10020-44924
+warning: drive not found in the database
+warning: using generic drive
+
+drive information
+  path: /dev/sg2
+  inquiry: ATAPI - DVD D DH16D2S (revision level: GD07, vendor specific: 2007/06/04 17:00)
+  configuration: GENERIC (read offset: +6, C2 shift: 0, pre-gap start: +0, read method: BE, sector order: DATA_C2_SUB)
+  profile: CD-ROM
+  read speed: 705 KB
+
+image path: /home/user/games/Harusame_Youbi_T20106M/redumper_gd07_sata_c2
+image name: Harusame_Youbi_T20106M
+
+*** RINGS (time check: 0s)
+
+ISO9660 map: 
+LBA: [     0 ..     16), count:     16, size:     32768, type: SYSTEM_AREA
+LBA: [    16 ..     18), count:      2, size:      4096, type: DESCRIPTORS
+LBA: [    18 ..     19), count:      1, size:        10, type: PATH_TABLE_L
+LBA: [    19 ..     20), count:      1, size:        10, type: PATH_TABLE_M
+LBA: [    20 ..     21), count:      1, size:      2048, type: DIRECTORY_EXTENT, name: /
+LBA: [    21 ..     22), count:      1, size:        47, type: FILE_EXTENT, name: /ABSTRACT.TXT
+LBA: [    22 ..     23), count:      1, size:        60, type: FILE_EXTENT, name: /BIBLIOGR.TXT
+LBA: [    23 ..     24), count:      1, size:        46, type: FILE_EXTENT, name: /COPYRIGH.TXT
+LBA: [  9920 ..   9920), count:      0, size:         0, type: VOLUME_END_MARKER
+
+dreamcast: GD-ROM detected
+
+*** DUMP (time check: 1s)
+
+disc TOC:
+  track 1 {  data }
+    index 01 { LBA:      0, MSF: 00:02:00 }
+  track 2 { audio }
+    index 01 { LBA:    600, MSF: 00:10:00 }
+  track A { audio }
+    index 01 { LBA:   9920, MSF: 02:14:20 }
+
+[LBA: 549150] subcode lead-out detected                             
+media errors: 
+  SCSI: 588 samples
+  C2: 90 samples
+  Q: 169
+
+*** DUMP::EXTRA (time check: 1030s)
+
+
+*** PROTECTION (time check: 0s)
+
+protection: none
+
+*** REFINE (time check: 0s)
+
+disc write offset: +13
+
+[LBA: 549178] subcode lead-out detected                                                
+correction statistics: 
+  SCSI: 588 samples
+  C2: 75 samples
+  Q: 1 sectors
+
+*** DVDKEY (time check: 34s)
+
+
+*** SPLIT (time check: 0s)
+
+dreamcast: GD-ROM dump detected
+
+
+correcting P... done
+correcting Q... done
+
+final TOC:
+  session 1
+    track 1 {  data }
+      index 00 { LBA: [  -150 ..     -1], length:    150, MSF: 00:00:00-00:01:74 }
+      index 01 { LBA: [     0 ..    449], length:    450, MSF: 00:02:00-00:07:74 }
+    track 2 { audio }
+      index 00 { LBA: [   450 ..    599], length:    150, MSF: 00:08:00-00:09:74 }
+      index 01 { LBA: [   600 ..   9919], length:   9320, MSF: 00:10:00-02:14:19 }
+    track A { audio }
+      index 01 { LBA: [  9920 ..  44849], length:  34930, MSF: 02:14:20-09:59:74 }
+  session 2
+    track 3 {  data }
+      index 00 { LBA: [ 44850 ..  44999], length:    150, MSF: 10:00:00-10:01:74 }
+      index 01 { LBA: [ 45000 .. 549149], length: 504150, MSF: 10:02:00-122:03:74 }
+    track A {  data }
+      index 01 { LBA: [549150 .. 549277], length:    128, MSF: 122:04:00-122:05:52 }
+
+warning: failed to parse CD-TEXT data
+analyzing... done (time: 30s)
+
+data disc detected, offset configuration: 
+  LBA:      0 ->      0, MSF: 00:02:00, count: 549278, offset: +13
+
+non-zero  TOC sample range: [   -88200 .. +322900200]
+non-zero data sample range: [      +13 .. +322975458]
+warning: non-zero data range is not continuous, skipping Universal Hash calculation
+
+disc write offset: +13
+
+warning: incomplete pre-gap (session: 1, unavailable: 150/150)
+warning: incomplete pre-gap (session: 2, unavailable: 75/150)
+warning: lead-in contains non-zero data (session: 2, sectors: 1/150)
+warning: lead-in starts with unavailable sector (session: 1)
+warning: lead-in starts with unavailable sector (session: 2)
+checking tracks
+done
+
+writing tracks
+warning: descramble failed (LBA: [44925 .. 44999])
+done
+
+multisession: 
+  session 1: 0-9919
+  session 2: 44850-549149
+
+CUE [Harusame_Youbi_T20106M.cue]:
+REM SINGLE-DENSITY AREA
+FILE "Harusame_Youbi_T20106M (Track 1).bin" BINARY
+  TRACK 01 MODE1/2352
+    INDEX 01 00:00:00
+FILE "Harusame_Youbi_T20106M (Track 2).bin" BINARY
+  TRACK 02 AUDIO
+    INDEX 00 00:00:00
+    INDEX 01 00:02:00
+REM LEAD-OUT 01:30:00
+REM HIGH-DENSITY AREA
+REM LEAD-IN 01:00:00
+REM PREGAP 00:02:00
+FILE "Harusame_Youbi_T20106M (Track 3).bin" BINARY
+  TRACK 03 MODE1/2352
+    INDEX 01 00:00:00
+
+
+*** HASH (time check: 50s)
+
+dat:
+<rom name="Harusame_Youbi_T20106M (Track 1).bin" size="1058400" crc="095362e2" md5="1b7f2d2f07758b539b8a214baec03ea4" sha1="0d73d251899f57c8b70cc38a6b38c72d32e80fd9" />
+<rom name="Harusame_Youbi_T20106M (Track 2).bin" size="22273440" crc="d1e2d301" md5="a1b90b6d22bb44b152625fc290c0886a" sha1="665aae66cf3ef66875892b8b8062e1fda9ce2723" />
+<rom name="Harusame_Youbi_T20106M (Track 3).bin" size="1185760800" crc="257aa5fd" md5="fdc8af6bb23a791766dde5334af493f6" sha1="c97141a6e61183c27c463e5c46bc648317e5b523" />
+dat (extra):
+<rom name="Harusame_Youbi_T20106M (Track 0.2).bin" size="352800" crc="4714645c" md5="ef168c63fa70c1a1fcec82fa35d13f2d" sha1="703f62b1f1821e4f24ab2153ddc442bfaab15d72" />
+
+*** INFO (time check: 0s)
+
+CD-ROM [Harusame_Youbi_T20106M (Track 1).bin]:
+  sectors count: 450
+  mode1 sectors: 450
+
+  REDUMP.INFO errors: 0
+
+ISO9660 [Harusame_Youbi_T20106M (Track 1).bin]:
+  volume identifier: HARUSAME_YOUBI
+  PVD:
+0320 : 20 20 20 20 20 20 20 20  20 20 20 20 20 32 30 30                200
+0330 : 30 31 32 32 30 31 31 30  35 35 34 30 30 24 32 30   0122011055400$20
+0340 : 30 30 31 32 32 30 31 31  30 35 35 34 30 30 24 30   00122011055400$0
+0350 : 30 30 30 30 30 30 30 30  30 30 30 30 30 30 30 00   000000000000000.
+0360 : 30 30 30 30 30 30 30 30  30 30 30 30 30 30 30 30   0000000000000000
+0370 : 00 01 00 00 00 00 00 00  00 00 00 00 00 00 00 00   ................
+
+DC [Harusame_Youbi_T20106M (Track 1).bin]:
+  build date: 2001-02-20
+  version: 1.004
+  serial: T20106M
+  region: Japan
+  header:
+0000 : 53 45 47 41 20 53 45 47  41 4B 41 54 41 4E 41 20   SEGA SEGAKATANA 
+0010 : 53 45 47 41 20 45 4E 54  45 52 50 52 49 53 45 53   SEGA ENTERPRISES
+0020 : 39 39 30 33 20 47 44 2D  52 4F 4D 31 2F 31 20 20   9903 GD-ROM1/1  
+0030 : 4A 20 20 20 20 20 20 20  30 37 39 39 41 31 30 20   J       0799A10 
+0040 : 54 32 30 31 30 36 4D 20  20 20 56 31 2E 30 30 34   T20106M   V1.004
+0050 : 32 30 30 31 30 32 32 30  20 20 20 20 20 20 20 20   20010220        
+0060 : 31 53 54 5F 52 45 41 44  2E 42 49 4E 20 20 20 20   1ST_READ.BIN    
+0070 : 53 45 47 41 20 4C 43 2D  54 2D 32 30 31 20 20 20   SEGA LC-T-201   
+0080 : 48 41 52 55 53 41 4D 45  20 59 4F 55 42 49 20 20   HARUSAME YOUBI  
+0090 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+00A0 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+00B0 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+00C0 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+00D0 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+00E0 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+00F0 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+
+CD-ROM [Harusame_Youbi_T20106M (Track 3).bin]:
+  sectors count: 504150
+  mode1 sectors: 504150
+
+  REDUMP.INFO errors: 0
+
+ISO9660 [Harusame_Youbi_T20106M (Track 3).bin]:
+  volume identifier: HARUSAME_YOUBI
+  PVD:
+0320 : 20 20 20 20 20 20 20 20  20 20 20 20 20 32 30 30                200
+0330 : 30 31 32 32 30 31 31 30  35 35 34 30 30 24 32 30   0122011055400$20
+0340 : 30 30 31 32 32 30 31 31  30 35 35 34 30 30 24 30   00122011055400$0
+0350 : 30 30 30 30 30 30 30 30  30 30 30 30 30 30 30 00   000000000000000.
+0360 : 30 30 30 30 30 30 30 30  30 30 30 30 30 30 30 30   0000000000000000
+0370 : 00 01 00 00 00 00 00 00  00 00 00 00 00 00 00 00   ................
+
+DC [Harusame_Youbi_T20106M (Track 3).bin]:
+  build date: 2001-02-20
+  version: 1.004
+  serial: T20106M
+  region: Japan
+  header:
+0000 : 53 45 47 41 20 53 45 47  41 4B 41 54 41 4E 41 20   SEGA SEGAKATANA 
+0010 : 53 45 47 41 20 45 4E 54  45 52 50 52 49 53 45 53   SEGA ENTERPRISES
+0020 : 39 39 30 33 20 47 44 2D  52 4F 4D 31 2F 31 20 20   9903 GD-ROM1/1  
+0030 : 4A 20 20 20 20 20 20 20  30 37 39 39 41 31 30 20   J       0799A10 
+0040 : 54 32 30 31 30 36 4D 20  20 20 56 31 2E 30 30 34   T20106M   V1.004
+0050 : 32 30 30 31 30 32 32 30  20 20 20 20 20 20 20 20   20010220        
+0060 : 31 53 54 5F 52 45 41 44  2E 42 49 4E 20 20 20 20   1ST_READ.BIN    
+0070 : 53 45 47 41 20 4C 43 2D  54 2D 32 30 31 20 20 20   SEGA LC-T-201   
+0080 : 48 41 52 55 53 41 4D 45  20 59 4F 55 42 49 20 20   HARUSAME YOUBI  
+0090 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+00A0 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+00B0 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+00C0 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+00D0 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+00E0 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+00F0 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+
+*** END (time check: 6s)

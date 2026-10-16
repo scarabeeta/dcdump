@@ -1,0 +1,52 @@
+=== 2026-10-09 04:22:03 ========================================================
+redumper (build: b746)
+
+arguments: disc --rings --drive=/dev/sg2 --image-path=/home/user/games/Sengoku_Turb_T38801M/redumper_gd07_sata_c2 --image-name=Sengoku_Turb_T38801M --retries=10 --speed=4 --drive-type=GENERIC --drive-read-method=BE --drive-sector-order=DATA_C2_SUB --drive-read-offset=6 --skip=17948-44924
+warning: drive not found in the database
+warning: using generic drive
+
+drive information
+  path: /dev/sg2
+  inquiry: ATAPI - DVD D DH16D2S (revision level: GD07, vendor specific: 2007/06/04 17:00)
+  configuration: GENERIC (read offset: +6, C2 shift: 0, pre-gap start: +0, read method: BE, sector order: DATA_C2_SUB)
+  profile: CD-ROM
+  read speed: 705 KB
+
+image path: /home/user/games/Sengoku_Turb_T38801M/redumper_gd07_sata_c2
+image name: Sengoku_Turb_T38801M
+
+*** RINGS (time check: 0s)
+
+
+*** DUMP (time check: 2s)
+
+disc TOC:
+  track 1 {  data }
+    index 01 { LBA:      0, MSF: 00:02:00 }
+  track 2 { audio }
+    index 01 { LBA:  17110, MSF: 03:50:10 }
+  track A { audio }
+    index 01 { LBA:  17848, MSF: 03:59:73 }
+
+media errors: 
+  SCSI: 0 samples
+  C2: 139547 samples
+  Q: 2422
+
+*** DUMP::EXTRA (time check: 115s)
+
+
+*** PROTECTION (time check: 2s)
+
+protection: none
+
+*** REFINE (time check: 0s)
+
+disc write offset: -5519
+
+[LBA:   5531] forced stop                                                                     
+
+correction statistics: 
+  SCSI: 0 samples
+  C2: 61312 samples
+  Q: 185 sectors

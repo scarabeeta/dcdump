@@ -1,0 +1,283 @@
+=== 2026-10-09 19:35:37 ========================================================
+redumper (build: b746)
+
+arguments: disc --drive=/dev/sg2 "--image-path=/home/user/dcdump/work/dc/Aero Dancing i (Japan)" "--image-name=Aero Dancing i (Japan)" --retries=20 --rings --speed=4 --drive-type=GENERIC --drive-read-method=BE --drive-read-offset=6 --drive-sector-order=DATA_C2_SUB --skip=16280-44852
+warning: drive not found in the database
+warning: using generic drive
+
+drive information
+  path: /dev/sg2
+  inquiry: ATAPI - DVD D DH16D2S (revision level: GD08, vendor specific: 2007/06/04 17:00)
+  configuration: GENERIC (read offset: +6, C2 shift: 0, pre-gap start: +0, read method: BE, sector order: DATA_C2_SUB)
+  profile: CD-ROM
+  read speed: 705 KB
+
+image path: "/home/user/dcdump/work/dc/Aero Dancing i (Japan)"
+image name: "Aero Dancing i (Japan)"
+
+*** RINGS (time check: 0s)
+
+ISO9660 map: 
+LBA: [     0 ..     16), count:     16, size:     32768, type: SYSTEM_AREA
+LBA: [    16 ..     18), count:      2, size:      4096, type: DESCRIPTORS
+LBA: [    18 ..     19), count:      1, size:        10, type: PATH_TABLE_L
+LBA: [    19 ..     20), count:      1, size:        10, type: PATH_TABLE_M
+LBA: [    20 ..     21), count:      1, size:      2048, type: DIRECTORY_EXTENT, name: /
+LBA: [    21 ..     22), count:      1, size:        14, type: FILE_EXTENT, name: /ABSTRACT.TXT
+LBA: [    22 ..     23), count:      1, size:        33, type: FILE_EXTENT, name: /COPYRIGH.TXT
+LBA: [    23 ..   1578), count:   1555, size:   3183282, type: FILE_EXTENT, name: /TITLE_ARR.MP3
+LBA: [ 16180 ..  16180), count:      0, size:         0, type: VOLUME_END_MARKER
+
+dreamcast: GD-ROM detected
+
+*** DUMP (time check: 0s)
+
+disc TOC:
+  track 1 {  data }
+    index 01 { LBA:      0, MSF: 00:02:00 }
+  track 2 { audio }
+    index 01 { LBA:   1878, MSF: 00:27:03 }
+  track A { audio }
+    index 01 { LBA:  16180, MSF: 03:37:55 }
+
+[LBA: 549150] subcode lead-out detected                            
+media errors: 
+  SCSI: 0 samples
+  C2: 990 samples
+  Q: 115
+
+*** DUMP::EXTRA (time check: 999s)
+
+
+*** PROTECTION (time check: 0s)
+
+protection: none
+
+*** REFINE (time check: 0s)
+
+disc write offset: +24
+
+[LBA: 549217] subcode lead-out detected                                       
+correction statistics: 
+  SCSI: 0 samples
+  C2: 702 samples
+  Q: 2 sectors
+
+*** DVDKEY (time check: 9s)
+
+
+*** SPLIT (time check: 0s)
+
+dreamcast: GD-ROM dump detected
+
+
+correcting P... done
+correcting Q... done
+
+final TOC:
+  session 1
+    track 1 {  data }
+      index 00 { LBA: [  -150 ..     -1], length:    150, MSF: 00:00:00-00:01:74 }
+      index 01 { LBA: [     0 ..   1727], length:   1728, MSF: 00:02:00-00:25:02 }
+    track 2 { audio }
+      index 00 { LBA: [  1728 ..   1877], length:    150, MSF: 00:25:03-00:27:02 }
+      index 01 { LBA: [  1878 ..  16179], length:  14302, MSF: 00:27:03-03:37:54 }
+    track A { audio }
+      index 01 { LBA: [ 16180 ..  44702], length:  28523, MSF: 03:37:55-09:58:02 }
+  session 2
+    track 3 {  data }
+      index 00 { LBA: [ 44703 ..  44999], length:    297, MSF: 09:58:03-10:01:74 }
+      index 01 { LBA: [ 45000 .. 533113], length: 488114, MSF: 10:02:00-118:30:13 }
+    track 4 { audio }
+      index 00 { LBA: [533114 .. 533263], length:    150, MSF: 118:30:14-118:32:13 }
+      index 01 { LBA: [533264 .. 545262], length:  11999, MSF: 118:32:14-121:12:12 }
+    track 5 {  data }
+      index 00 { LBA: [545263 .. 545487], length:    225, MSF: 121:12:13-121:15:12 }
+      index 01 { LBA: [545488 .. 549149], length:   3662, MSF: 121:15:13-122:03:74 }
+    track A {  data }
+      index 01 { LBA: [549150 .. 549249], length:    100, MSF: 122:04:00-122:05:24 }
+
+warning: TOC / QTOC mismatch, track index 00 (track: 2, LBA: 1728 <=> 16066)
+warning: TOC / QTOC mismatch, track index 01 (track: 2, LBA: 1878 <=> 16216)
+warning: TOC / QTOC mismatch, track length (track: 2, LBA: 16180 <=> 16231)
+warning: TOC / QTOC mismatch, control (track: 5, control: 0100 <=> 0000)
+
+final QTOC:
+  session 1
+    track 1 {  data }
+      index 00 { LBA: [  -150 ..     -1], length:    150, MSF: 00:00:00-00:01:74 }
+      index 01 { LBA: [     0 ..   1727], length:   1728, MSF: 00:02:00-00:25:02 }
+    track 2 { audio }
+      index 00 { LBA: [  1728 ..   1877], length:    150, MSF: 00:25:03-00:27:02 }
+      index 01 { LBA: [  1878 ..  16179], length:  14302, MSF: 00:27:03-03:37:54 }
+    track A { audio }
+      index 01 { LBA: [ 16180 ..  16215], length:     36, MSF: 03:37:55-03:38:15 }
+  session 2
+    track 2 { audio }
+      index 00 { LBA: [ 16066 ..  16215], length:    150, MSF: 03:36:16-03:38:15 }
+      index 01 { LBA: [ 16216 ..  16230], length:     15, MSF: 03:38:16-03:38:30 }
+    track A { audio }
+      index 01 { LBA: [ 16231 ..  44852], length:  28622, MSF: 03:38:31-10:00:02 }
+  session 3
+    track 3 {  data }
+      index 00 { LBA: [ 44703 ..  44999], length:    297, MSF: 09:58:03-10:01:74 }
+      index 01 { LBA: [ 45000 .. 533113], length: 488114, MSF: 10:02:00-118:30:13 }
+    track 4 { audio }
+      index 00 { LBA: [533114 .. 533263], length:    150, MSF: 118:30:14-118:32:13 }
+      index 01 { LBA: [533264 .. 545262], length:  11999, MSF: 118:32:14-121:12:12 }
+    track 5 { audio }
+      index 00 { LBA: [545263 .. 545487], length:    225, MSF: 121:12:13-121:15:12 }
+      index 01 { LBA: [545488 .. 549149], length:   3662, MSF: 121:15:13-122:03:74 }
+    track A {  data }
+      index 01 { LBA: [549150 .. 549249], length:    100, MSF: 122:04:00-122:05:24 }
+
+warning: failed to parse CD-TEXT data
+analyzing... done (time: 30s)
+
+data disc detected, offset configuration: 
+  LBA:      0 ->      0, MSF: 00:02:00, count: 549250, offset: +24
+
+non-zero  TOC sample range: [   -88200 .. +322900200]
+non-zero data sample range: [      +24 .. +322958994]
+warning: non-zero data range is not continuous, skipping Universal Hash calculation
+
+disc write offset: +24
+
+warning: incomplete pre-gap (session: 1, unavailable: 150/150)
+warning: incomplete pre-gap (session: 2, unavailable: 3/150)
+warning: lead-in starts with unavailable sector (session: 1)
+checking tracks
+done
+
+writing tracks
+warning: descramble failed (LBA: [545263 .. 545337])
+done
+
+multisession: 
+  session 1: 0-16179
+  session 2: 45000-549149
+
+CUE [Aero Dancing i (Japan).cue]:
+REM SINGLE-DENSITY AREA
+FILE "Aero Dancing i (Japan) (Track 1).bin" BINARY
+  TRACK 01 MODE1/2352
+    INDEX 01 00:00:00
+FILE "Aero Dancing i (Japan) (Track 2).bin" BINARY
+  TRACK 02 AUDIO
+    INDEX 00 00:00:00
+    INDEX 01 00:02:00
+REM LEAD-OUT 01:30:00
+REM HIGH-DENSITY AREA
+REM LEAD-IN 01:00:00
+REM PREGAP 00:02:00
+FILE "Aero Dancing i (Japan) (Track 3).bin" BINARY
+  TRACK 03 MODE1/2352
+    INDEX 01 00:00:00
+FILE "Aero Dancing i (Japan) (Track 4).bin" BINARY
+  TRACK 04 AUDIO
+    INDEX 00 00:00:00
+    INDEX 01 00:02:00
+FILE "Aero Dancing i (Japan) (Track 5).bin" BINARY
+  TRACK 05 MODE1/2352
+    INDEX 00 00:00:00
+    INDEX 01 00:03:00
+
+
+*** HASH (time check: 50s)
+
+dat:
+<rom name="Aero Dancing i (Japan) (Track 1).bin" size="4064256" crc="4bd3ec88" md5="dedbd174be77e5be20347ea71e1fe587" sha1="30a60252b0025e2796ecbf06d7e37cda3ad6b469" />
+<rom name="Aero Dancing i (Japan) (Track 2).bin" size="33991104" crc="6cdc2a99" md5="12c1bb175e43221ffc236fad476899c5" sha1="7cd924d702ee58a14184eddf08e661dd63591ed0" />
+<rom name="Aero Dancing i (Japan) (Track 3).bin" size="1148044128" crc="6303c009" md5="6f50071e3aedf44fe4e3b7fd8f2ee451" sha1="b6649c7441c899f024dd039a27c7732e9989429a" />
+<rom name="Aero Dancing i (Japan) (Track 4).bin" size="28574448" crc="ddd291fc" md5="aa9a09a5f216c533cae4e45b788b15d7" sha1="eeb2b118fc3dc43319c0ad7aa20006e14da78f3c" />
+<rom name="Aero Dancing i (Japan) (Track 5).bin" size="9142224" crc="ca873616" md5="3dcd029ac799cceb2e3c5eb814e4ef02" sha1="55da44e25e690f15ef4272ee51266cdcf46ffed4" />
+
+*** INFO (time check: 0s)
+
+CD-ROM [Aero Dancing i (Japan) (Track 1).bin]:
+  sectors count: 1728
+  mode1 sectors: 1728
+
+  REDUMP.INFO errors: 0
+
+ISO9660 [Aero Dancing i (Japan) (Track 1).bin]:
+  volume identifier: AEROI
+  PVD:
+0320 : 20 20 20 20 20 20 20 20  20 20 20 20 20 32 30 30                200
+0330 : 30 30 39 32 39 31 31 34  32 31 34 30 30 24 32 30   0092911421400$20
+0340 : 30 30 31 32 32 31 31 36  31 35 30 34 30 30 24 32   00122116150400$2
+0350 : 30 30 39 30 39 32 39 31  31 34 32 31 34 30 30 24   009092911421400$
+0360 : 32 30 30 30 30 39 32 39  31 31 34 32 31 34 30 30   2000092911421400
+0370 : 24 01 00 00 00 00 00 00  00 00 00 00 00 00 00 00   $...............
+
+DC [Aero Dancing i (Japan) (Track 1).bin]:
+  build date: 2001-01-08
+  version: 1.002
+  serial: T6807M
+  region: Japan
+  header:
+0000 : 53 45 47 41 20 53 45 47  41 4B 41 54 41 4E 41 20   SEGA SEGAKATANA 
+0010 : 53 45 47 41 20 45 4E 54  45 52 50 52 49 53 45 53   SEGA ENTERPRISES
+0020 : 36 36 46 45 20 47 44 2D  52 4F 4D 31 2F 31 20 20   66FE GD-ROM1/1  
+0030 : 4A 20 20 20 20 20 20 20  32 37 39 39 41 31 30 20   J       2799A10 
+0040 : 54 36 38 30 37 4D 20 20  20 20 56 31 2E 30 30 32   T6807M    V1.002
+0050 : 32 30 30 31 30 31 30 38  20 20 20 20 20 20 20 20   20010108        
+0060 : 31 53 54 5F 52 45 41 44  2E 42 49 4E 20 20 20 20   1ST_READ.BIN    
+0070 : 53 45 47 41 20 4C 43 2D  54 2D 36 38 20 20 20 20   SEGA LC-T-68    
+0080 : 41 45 52 4F 20 44 41 4E  43 49 4E 47 20 49 20 20   AERO DANCING I  
+0090 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+00A0 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+00B0 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+00C0 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+00D0 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+00E0 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+00F0 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+
+CD-ROM [Aero Dancing i (Japan) (Track 3).bin]:
+  sectors count: 488114
+  mode1 sectors: 488114
+
+  REDUMP.INFO errors: 0
+
+ISO9660 [Aero Dancing i (Japan) (Track 3).bin]:
+  volume identifier: AEROI
+  PVD:
+0320 : 20 20 20 20 20 20 20 20  20 20 20 20 20 32 30 30                200
+0330 : 30 30 39 32 39 31 31 34  32 31 34 30 30 24 32 30   0092911421400$20
+0340 : 30 30 31 32 32 31 31 36  31 35 30 34 30 30 24 32   00122116150400$2
+0350 : 30 30 39 30 39 32 39 31  31 34 32 31 34 30 30 24   009092911421400$
+0360 : 32 30 30 30 30 39 32 39  31 31 34 32 31 34 30 30   2000092911421400
+0370 : 24 01 00 00 00 00 00 00  00 00 00 00 00 00 00 00   $...............
+
+DC [Aero Dancing i (Japan) (Track 3).bin]:
+  build date: 2001-01-08
+  version: 1.002
+  serial: T6807M
+  region: Japan
+  header:
+0000 : 53 45 47 41 20 53 45 47  41 4B 41 54 41 4E 41 20   SEGA SEGAKATANA 
+0010 : 53 45 47 41 20 45 4E 54  45 52 50 52 49 53 45 53   SEGA ENTERPRISES
+0020 : 36 36 46 45 20 47 44 2D  52 4F 4D 31 2F 31 20 20   66FE GD-ROM1/1  
+0030 : 4A 20 20 20 20 20 20 20  32 37 39 39 41 31 30 20   J       2799A10 
+0040 : 54 36 38 30 37 4D 20 20  20 20 56 31 2E 30 30 32   T6807M    V1.002
+0050 : 32 30 30 31 30 31 30 38  20 20 20 20 20 20 20 20   20010108        
+0060 : 31 53 54 5F 52 45 41 44  2E 42 49 4E 20 20 20 20   1ST_READ.BIN    
+0070 : 53 45 47 41 20 4C 43 2D  54 2D 36 38 20 20 20 20   SEGA LC-T-68    
+0080 : 41 45 52 4F 20 44 41 4E  43 49 4E 47 20 49 20 20   AERO DANCING I  
+0090 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+00A0 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+00B0 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+00C0 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+00D0 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+00E0 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+00F0 : 20 20 20 20 20 20 20 20  20 20 20 20 20 20 20 20                   
+
+CD-ROM [Aero Dancing i (Japan) (Track 5).bin]:
+  sectors count: 3887
+  mode1 sectors: 3812
+  invalid sync sectors: 75 (LBA: 0-74)
+  MSF errors: 3811 (LBA: 76-3886)
+
+  REDUMP.INFO errors: 0
+
+*** END (time check: 6s)

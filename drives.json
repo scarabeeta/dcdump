@@ -1,0 +1,56 @@
+[
+  {
+    "id": "dh16d2s-gd08",
+    "description": "Lite-On DH-16D2S with GD08+ firmware (EH33-based, HD track-3 pregap readable from LBA 44853)",
+    "vendor": "^ATAPI$",
+    "model": "DH16D2S",
+    "rev": "^GD(0[89A-F]|[1-9A-F][0-9A-F])$",
+    "gd": true,
+    "read_offset": 6,
+    "speed": 0,
+    "sector_order": {
+      "usb": "DATA_SUB",
+      "sata": "DATA_C2_SUB"
+    },
+    "hd_first_lba": 44853,
+    "dreamdump": {
+      "sector_order": "DATA_C2_SUB",
+      "read_offset": 6,
+      "read_at_once": 16
+    }
+  },
+  {
+    "id": "dh16d2s-gd01",
+    "description": "Lite-On DH-16D2S with GD01-GD07 firmware (EH33-based, HD area readable from LBA 45000)",
+    "vendor": "^ATAPI$",
+    "model": "DH16D2S",
+    "rev": "^GD0[1-7]$",
+    "gd": true,
+    "read_offset": 6,
+    "speed": 0,
+    "sector_order": {
+      "usb": "DATA_SUB",
+      "sata": "DATA_C2_SUB"
+    },
+    "hd_first_lba": 45000,
+    "dreamdump": {
+      "sector_order": "DATA_C2_SUB",
+      "read_offset": 6,
+      "read_at_once": 16
+    }
+  },
+  {
+    "id": "dh16d2s-stock",
+    "description": "Lite-On DH-16D2S with stock firmware (LD area only)",
+    "vendor": "^ATAPI$",
+    "model": "DH16D2S",
+    "rev": ".*",
+    "gd": false,
+    "read_offset": 6,
+    "speed": 0,
+    "sector_order": {
+      "usb": "DATA_SUB",
+      "sata": "DATA_C2_SUB"
+    }
+  }
+]

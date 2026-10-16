@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!DOCTYPE datafile PUBLIC "-//Logiqx//DTD ROM Management Datafile//EN" "http://www.logiqx.com/Dats/datafile.dtd">
+<datafile>
+	<header>
+		<name>Sega - Dreamcast</name>
+		<description>Sega - Dreamcast - Datfile (serial,version) (1518) (2026-10-04 15-25-59)</description>
+		<version>2026-10-04 15-25-59</version>
+		<date>2026-10-04 15-25-59</date>
+		<author>redump.info</author>
+		<homepage>redump.info</homepage>
+		<url>https://redump.info/</url>
+	</header>
+		<game name="09 Chairs (Japan)" id="70112">
+		<category>Multimedia</category>
+		<serial>SCLX-2004 (8848)</serial>
+		<version>1.050</version>
+		<description>09 Chairs (Japan)</description>
+		<rom name="09 Chairs (Japan).cue" size="1289" crc="bf7e28be" md5="db7ce541753ac91d7b199ae8c2757414" sha1="03f34bc68d3b108ada6cff7f7e4424ed5ea21562"/>
+		<rom name="09 Chairs (Japan) (Track 01).bin" size="34285104" crc="8951f196" md5="0d9fcf3e5aa8844db7be1534ee1aede8" sha1="c12959728d7ffdb9f71e755dda29544d7a5ce3b1"/>
+		<rom name="09 Chairs (Japan) (Track 02).bin" size="54197136" crc="d15eb891" md5="c059dc1d7463ede81f998edf02e5d3d7" sha1="84f6283920dd447ca44b8817d6ebcff2d955a69e"/>
+		<rom name="09 Chairs (Japan) (Track 03).bin" size="43434384" crc="c0974479" md5="743ed84947c92aa17796100c3ea9c0eb" sha1="b25a000421090e6ff53d8a741f726afd8b631e07"/>
+		<rom name="09 Chairs (Japan) (Track 04).bin" size="56471520" crc="fc496df6" md5="94c81dc5ba7f50f8cee21b64e6e76cf9" sha1="3e9ddb0e6d059512277031ae0cc4fa3c52457047"/>
+		<rom name="09 Chairs (Japan) (Track 05).bin" size="53820816" crc="41589c1b" md5="de647c4f31431ff499f450d1df5bf674" sha1="e791ec3a447b2e22e8e33a451913b1e5430aefec"/>
+		<rom name="09 Chairs (Japan) (Track 06).bin" size="34198080" crc="f5eaad1e" md5="3c3f7c3014c816d5f06fa125c0559efa" sha1="1f4a77af649bc6776c760475de7ccc905594da7b"/>
+		<rom name="09 Chairs (Japan) (Track 07).bin" size="56130480" crc="cb40b2e8" md5="7257c0da74cc3c83f3f70469743da1cd" sha1="bf886b272513daeec6e643023a3408b3817d5ad2"/>
+		<rom name="09 Chairs (Japan) (Track 08).bin" size="46539024" crc="0e48384d" md5="f2278468ea75e61bfdef8d2a336da458" sha1="6a6ebdc45651232c94304ff93d772f57a3269e4e"/>
+		<rom name="09 Chairs (Japan) (Track 09).bin" size="10536960" crc="46155c75" md5="a682546c468130403651a786582ba362" sha1="21bc76ad5d71e829146c718ba593418da9c77668"/>
+		<rom name="09 Chairs (Japan) (Track 10).bin" size="39838176" crc="61e5f5b5" md5="6bdefa25fbff80a645dc239f2a82f3ad" sha1="d0af15a439c089b177cdb8401ba3eccacb01fe0d"/>
+		<rom name="09 Chairs (Japan) (Track 11).bin" size="47969040" crc="6811d6e9" md5="f619d1356035805350a24ce3a4120a17" sha1="66f3bec5a76ee9781c74383e4acba8b08a9e75a2"/>
+		<rom name="09 Chairs (Japan) (Track 12).bin" size="240040416" crc="41886e5a" md5="2e9a22bc9801684be1e64c134403fe77" sha1="f7e6ccdc64664efd119bbc858081e1fb529ce138"/>
+	</game>
+	<game name="Harusame Youbi (Japan)" id="27709">
+		<category>Games</category>
+		<serial>T-20106M</serial>
+		<version>1.004</version>
+		<description>Harusame Youbi (Japan)</description>
+		<rom name="Harusame Youbi (Japan).cue" size="360" crc="4d08fbec" md5="826e2453b2aa9db7e45a3a629ad2b1b3" sha1="25adc4351b6417689ec5f7d0a79bd2401623ff00"/>
+		<rom name="Harusame Youbi (Japan) (Track 1).bin" size="1058400" crc="095362e2" md5="1b7f2d2f07758b539b8a214baec03ea4" sha1="0d73d251899f57c8b70cc38a6b38c72d32e80fd9"/>
+		<rom name="Harusame Youbi (Japan) (Track 2).bin" size="22273440" crc="d1e2d301" md5="a1b90b6d22bb44b152625fc290c0886a" sha1="665aae66cf3ef66875892b8b8062e1fda9ce2723"/>
+		<rom name="Harusame Youbi (Japan) (Track 3).bin" size="1185760800" crc="257aa5fd" md5="fdc8af6bb23a791766dde5334af493f6" sha1="c97141a6e61183c27c463e5c46bc648317e5b523"/>
+	</game>
+	<game name="Sengoku Turb (Japan)" id="42549">
+		<category>Games</category>
+		<serial>T-38801M</serial>
+		<version>1.001</version>
+		<description>Sengoku Turb (Japan)</description>
+		<rom name="Sengoku Turb (Japan).cue" size="354" crc="37504888" md5="2dfccdca79abc22f9ae87698e8b2088d" sha1="186493c8fc5598a676cf7bcb21ed6c7a48a0972b"/>
+		<rom name="Sengoku Turb (Japan) (Track 1).bin" size="39889920" crc="cdf7efeb" md5="c67ae95111d44f8d2a9a56dd5de6d9bc" sha1="7facb61b31453adf0a4c133ba358f0bc048b9171"/>
+		<rom name="Sengoku Turb (Japan) (Track 2).bin" size="2088576" crc="1859ea65" md5="652a31166a58b8f933e8a924e7c88780" sha1="0ecd537e42946f3e74c80c9fcb8d0bccccfc96f1"/>
+		<rom name="Sengoku Turb (Japan) (Track 3).bin" size="1185760800" crc="3206f55a" md5="70df4841ac4b1e03d451f4364ba50416" sha1="e5182fc9d0370293acab6efe8353cbb11af9f1b6"/>
+	</game>
+	<game name="Alone in the Dark - The New Nightmare (USA) (Disc 1)" id="24762">
+		<category>Games</category>
+		<serial>T-15117N</serial>
+		<version>1.000</version>
+		<description>Alone in the Dark - The New Nightmare (USA) (Disc 1)</description>
+		<rom name="Alone in the Dark - The New Nightmare (USA) (Disc 1).cue" size="747" crc="a0855e1a" md5="6aec2e35cbe48e35e9d8a83083c0fd47" sha1="34e69db153db697fc25e5708a29e81d3f16ae4f3"/>
+		<rom name="Alone in the Dark - The New Nightmare (USA) (Disc 1) (Track 1).bin" size="1425312" crc="99ed17b4" md5="a0c02dc1e33fb1c5cd18071555c85865" sha1="2fbfafc3fd44cc0b298842fcd854136a536d3dad"/>
+		<rom name="Alone in the Dark - The New Nightmare (USA) (Disc 1) (Track 2).bin" size="1589952" crc="8557fcaa" md5="824ff123fbce45b5883962eb3fa43cab" sha1="a3705cb0ce53c7adf906c5af76887406984de6a9"/>
+		<rom name="Alone in the Dark - The New Nightmare (USA) (Disc 1) (Track 3).bin" size="130902912" crc="901987f0" md5="8dd2c59fcfed47796533180abc5429c8" sha1="035019d4dd3ea17cce3b2ba672d24ad881b8c62d"/>
+		<rom name="Alone in the Dark - The New Nightmare (USA) (Disc 1) (Track 4).bin" size="1237152" crc="95557332" md5="cb9f913312fff0782cd8c87568bcc047" sha1="cf9a3476b4886212c18868190f98d301f5205a09"/>
+		<rom name="Alone in the Dark - The New Nightmare (USA) (Disc 1) (Track 5).bin" size="1053620736" crc="a1339d34" md5="03db0e7aaf9562ca053bf69a92eeab5c" sha1="be528661f45c74c3891a938d7566adfe024aaac9"/>
+	</game>
+	<game name="Alone in the Dark - The New Nightmare (USA) (Disc 2)" id="24777">
+		<category>Games</category>
+		<serial>T-15117N</serial>
+		<version>1.000</version>
+		<description>Alone in the Dark - The New Nightmare (USA) (Disc 2)</description>
+		<rom name="Alone in the Dark - The New Nightmare (USA) (Disc 2).cue" size="747" crc="9cec4527" md5="225c9f47137efc250f511c5801a1140a" sha1="ebba1aaf1a627887a5dc198fd45356b0663f56b2"/>
+		<rom name="Alone in the Dark - The New Nightmare (USA) (Disc 2) (Track 1).bin" size="1425312" crc="e3281406" md5="d5bfab87454c14925ae7b9b7ce36850f" sha1="a4f995236d77c07a0e5a4aed99ea22258fbaa9e3"/>
+		<rom name="Alone in the Dark - The New Nightmare (USA) (Disc 2) (Track 2).bin" size="1589952" crc="8557fcaa" md5="824ff123fbce45b5883962eb3fa43cab" sha1="a3705cb0ce53c7adf906c5af76887406984de6a9"/>
+		<rom name="Alone in the Dark - The New Nightmare (USA) (Disc 2) (Track 3).bin" size="34466208" crc="9c1673e8" md5="8bab5e2ee1b5f24bb1ed748af816346a" sha1="c0f220f181edb56f302cd410839409e02071e632"/>
+		<rom name="Alone in the Dark - The New Nightmare (USA) (Disc 2) (Track 4).bin" size="1237152" crc="95557332" md5="cb9f913312fff0782cd8c87568bcc047" sha1="cf9a3476b4886212c18868190f98d301f5205a09"/>
+		<rom name="Alone in the Dark - The New Nightmare (USA) (Disc 2) (Track 5).bin" size="1150057440" crc="78466d2e" md5="59fa8997f04769c6525a3f79e4dbdd9c" sha1="65b1a58df92493d5e9af7917729ef4c296105306"/>
+	</game>
+	<game name="Sonic Adventure (Europe) (En,Ja,Fr,De,Es)" id="1188">
+		<category>Games</category>
+		<serial>MK-51000-53</serial>
+		<version>1.003</version>
+		<description>Sonic Adventure (Europe) (En,Ja,Fr,De,Es)</description>
+		<rom name="Sonic Adventure (Europe) (En,Ja,Fr,De,Es).cue" size="417" crc="2fc4732f" md5="3d59d0a185f50f28e435483fcef8c5c1" sha1="cc951a76c2f5681712f1410c618ffd9dc376d79d"/>
+		<rom name="Sonic Adventure (Europe) (En,Ja,Fr,De,Es) (Track 1).bin" size="26721072" crc="2ef14020" md5="b9ed5dc4b9b183501ffb7f718a0d1f69" sha1="39f1cd8f99667d22fdb292f0af55129d7443bcaf"/>
+		<rom name="Sonic Adventure (Europe) (En,Ja,Fr,De,Es) (Track 2).bin" size="14347200" crc="49e43706" md5="9cca4624e62f04dc398aed22b5370a34" sha1="a34bdc73ac1e360b13d0592b501a388e0225e994"/>
+		<rom name="Sonic Adventure (Europe) (En,Ja,Fr,De,Es) (Track 3).bin" size="1185760800" crc="cb447185" md5="4df671c2091877bc3dd9b8907649ded4" sha1="3211dbdb233c12d8d5af852c05f6c2c0d3ba3c1e"/>
+	</game>
+	<game name="Dynamite Cop (Europe)" id="61587">
+		<category>Games</category>
+		<serial>950-0015-50, MK-51013-50</serial>
+		<version>1.005</version>
+		<description>Dynamite Cop (Europe)</description>
+		<rom name="Dynamite Cop (Europe).cue" size="357" crc="6f5fe9b2" md5="31ad3575401bdfa3bbbb4971028dabd1" sha1="00676d4e80dae3eb01ac72addb52388bc9782447"/>
+		<rom name="Dynamite Cop (Europe) (Track 1).bin" size="1058400" crc="fa22a44a" md5="7a8d3ed2678791983d78670cd1823be3" sha1="47f199834198bf10410daf71f9dc91aca224556b"/>
+		<rom name="Dynamite Cop (Europe) (Track 2).bin" size="14347200" crc="49e43706" md5="9cca4624e62f04dc398aed22b5370a34" sha1="a34bdc73ac1e360b13d0592b501a388e0225e994"/>
+		<rom name="Dynamite Cop (Europe) (Track 3).bin" size="1185760800" crc="227760da" md5="83e8cdbd90b49a9a2043806ba8696ed1" sha1="8ba7e76b3861e5c8376250fcd727cd9292137f9c"/>
+	</game>
+</datafile>
