@@ -147,14 +147,14 @@ func TestProfilesAndArgs(t *testing.T) {
 	rp := BuildRun(sata, ParseOptions([]string{"--drive", "2", "--", "--overwrite"}), "/dev/sg2", "/w", "N")
 	j := strings.Join(rp.Args, " ")
 	if rp.Binary != "redumper" || !strings.Contains(j, "--drive-sector-order=DATA_C2_SUB") || strings.Contains(j, "--skip") ||
-		strings.Contains(j, "--rings") || !strings.HasSuffix(j, "--overwrite") || strings.Contains(j, "--drive 2") {
-		t.Errorf("sata args: %s %s", rp.Binary, j)
+		strings.Contains(j, "--rings") || !strings.HasSuffix(j, "--overwrite") || strings.Contains(j, "--drive 2") || rp.ExactSize {
+		t.Errorf("sata args: %s %s exact=%v", rp.Binary, j, rp.ExactSize)
 	}
 	usb := &Drive{Transport: "USB", Profile: gd}
 	rp = BuildRun(usb, ParseOptions(nil), "/dev/sg5", "/w", "N")
 	j = strings.Join(rp.Args, " ")
-	if rp.Binary != "redumper" || !strings.Contains(j, "--drive-sector-order=DATA_SUB") {
-		t.Errorf("usb args: %s %s", rp.Binary, j)
+	if rp.Binary != "redumper" || !strings.Contains(j, "--drive-sector-order=DATA_SUB") || !rp.ExactSize {
+		t.Errorf("usb args: %s %s exact=%v", rp.Binary, j, rp.ExactSize)
 	}
 	rp = BuildRun(usb, ParseOptions([]string{"--ld-only", "--retries=5"}), "/dev/sg5", "/w", "N")
 	j = strings.Join(rp.Args, " ")
@@ -387,5 +387,30 @@ func TestRedumperKnowsDrive(t *testing.T) {
 	}
 	if redumperKnowsDrive("redumper-missing", known) {
 		t.Error("a missing binary knows nothing")
+	}
+}
+
+// A release older than the one that asks for the exact transfer length must be refused on
+// the DATA_SUB path; a local build has no release number and is only warned about.
+func TestBuildNumber(t *testing.T) {
+	for _, c := range []struct {
+		build string
+		n     int
+		ok    bool
+	}{
+		{"b767", 767, true},
+		{"b765", 765, true},
+		{"b1024", 1024, true},
+		{"b765-pr459", 0, false},
+		{"9002", 0, false},
+		{"", 0, false},
+	} {
+		n, ok := buildNumber(c.build)
+		if n != c.n || ok != c.ok {
+			t.Errorf("buildNumber(%q) = %d, %v; want %d, %v", c.build, n, ok, c.n, c.ok)
+		}
+		if ok && (n < minExactSizeBuild) != (c.n < minExactSizeBuild) {
+			t.Errorf("%q: unexpected comparison against b%d", c.build, minExactSizeBuild)
+		}
 	}
 }

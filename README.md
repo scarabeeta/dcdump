@@ -47,7 +47,8 @@ Anything after `--` goes to redumper. Output lands in `<repo>/work/dc/<name>/`, 
 - **LD area**: redumper. If redumper knows the drive, its own database decides the settings;
   otherwise they come from the drive list. Over USB the sector order is forced to `DATA_SUB`,
   because ASM1153 bridges mangle transfers whose length is not a multiple of 4; b767 is the
-  first build that asks for exactly that length.
+  first build that asks for exactly that length, and an older release is refused on that path
+  rather than left to produce a corrupt dump.
 - **HD area**: dreamdump with the drive-list parameters, in `<dir>/dreamdump/`. They are
   always passed explicitly: dreamdump's own list stops at DH16D2S GD0C, so a newer firmware
   revision would be refused. Its tracks are moved next to the LD ones, its log is kept, and

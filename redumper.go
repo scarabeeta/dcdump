@@ -20,9 +20,32 @@ import (
 )
 
 type RunPlan struct {
-	Binary string
-	Known  bool // the drive is in this redumper build's own database
-	Args   []string
+	Binary    string
+	Known     bool // the drive is in this redumper build's own database
+	ExactSize bool // the sector order needs the exact READ CD transfer length (b767)
+	Args      []string
+}
+
+// minExactSizeBuild is the first redumper release that asks for exactly the bytes the
+// drive returns (superg/redumper#459). Below it, DATA_SUB over a bridge that mangles
+// transfers whose length is not a multiple of 4 reads corrupt data and only the final
+// hash comparison notices, so the run is refused instead.
+const minExactSizeBuild = 767
+
+// reBuildNumber takes the release number out of a build id such as "b767". A local build
+// ("b765-pr459", "9002") has no release number and is left to the user.
+var reBuildNumber = regexp.MustCompile(`^b(\d+)$`)
+
+func buildNumber(build string) (int, bool) {
+	m := reBuildNumber.FindStringSubmatch(build)
+	if m == nil {
+		return 0, false
+	}
+	n := 0
+	if _, err := fmt.Sscan(m[1], &n); err != nil {
+		return 0, false
+	}
+	return n, true
 }
 
 // SplitArgs separates dcdump's own options from the passthrough to redumper
@@ -150,6 +173,7 @@ func BuildRun(d *Drive, o Options, sgPath, workDir, fullName string) RunPlan {
 			}
 			if order != "" && (!rp.Known || d.Transport != "SATA") {
 				args = append(args, "--drive-sector-order="+order)
+				rp.ExactSize = order == "DATA_SUB"
 			}
 		}
 	}
@@ -246,6 +270,16 @@ func (rp *RunPlan) Run() (string, string) {
 		fatal("redumper not found on PATH.")
 	}
 	build := redumperBuild(path)
+	if rp.ExactSize {
+		if n, ok := buildNumber(build); !ok {
+			fmt.Printf("[!] Cannot read a release number from redumper build %q.\n"+
+				"    DATA_SUB needs b%d or later; an older one reads corrupt data.\n\n", build, minExactSizeBuild)
+		} else if n < minExactSizeBuild {
+			fatal(fmt.Sprintf("redumper %s is too old for this drive.\n"+
+				"  DATA_SUB needs b%d or later, where READ CD asks for the exact transfer length;\n"+
+				"  on an older build the bridge returns corrupt data.", build, minExactSizeBuild))
+		}
+	}
 	fmt.Println("Running redumper...")
 	fmt.Printf("  %s (build: %s)\n", rp.Binary, build)
 	if rp.Known {
