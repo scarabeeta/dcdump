@@ -11,7 +11,7 @@ A hash that does not match means exit 1.
 
 ## Install
 
-Needs Linux, Go 1.26+, and redumper b765 or later plus dreamdump on `PATH`.
+Needs Linux, Go 1.26+, and redumper b767 or later plus dreamdump on `PATH`.
 
 ```
 go install github.com/wakasio/dcdump@latest
@@ -45,13 +45,14 @@ Anything after `--` goes to redumper. Output lands in `<repo>/work/dc/<name>/`, 
   redump.info datfile, which is refreshed with a conditional GET each run. A disc that is not
   in it still gets dumped and is named by hash afterwards.
 - **LD area**: redumper. If redumper knows the drive, its own database decides the settings;
-  otherwise they come from the drive list. Over USB the sector order is forced to `DATA_SUB`
-  and `redumper-exact` is used (upstream plus PR superg/redumper#459), because ASM1153 bridges
-  mangle transfers whose length is not a multiple of 4.
-- **HD area**: dreamdump with the drive-list parameters, in `<dir>/dreamdump/`. Its tracks are
-  moved next to the LD ones, its log is kept, and the two cues become one GD-ROM cue. USB
-  links are pinned to USB 2.0. On SATA a libata fallback to PIO is reported; reboot to get DMA
-  back.
+  otherwise they come from the drive list. Over USB the sector order is forced to `DATA_SUB`,
+  because ASM1153 bridges mangle transfers whose length is not a multiple of 4; b767 is the
+  first build that asks for exactly that length.
+- **HD area**: dreamdump with the drive-list parameters, in `<dir>/dreamdump/`. They are
+  always passed explicitly: dreamdump's own list stops at DH16D2S GD0C, so a newer firmware
+  revision would be refused. Its tracks are moved next to the LD ones, its log is kept, and
+  the two cues become one GD-ROM cue. USB links are pinned to USB 2.0. On SATA a libata
+  fallback to PIO is reported; reboot to get DMA back.
 - **Finish**: `<name>_logs.zip` for submission, a CRLF cue and a `.gdi`. Exit 1 if redumper's
   sector check failed, an HD track is missing, or any hash differs.
 

@@ -2,12 +2,11 @@
 
 // dcdump — Dreamcast GD-ROM dump tool for Linux (redumper wrapper).
 //
-// Command-line conventions: --manual, --drive VALUE, --serial VALUE, --retries=N,
-// and everything after a literal -- passed to
-// `redumper disc`. DC specifics: a drive list of GD-capable drives, transport-
-// dependent read settings for drives redumper does not know (SATA: C2; USB: no C2
-// via redumper-exact), skipping the empty area between the LD and HD areas, strict
-// log checks, and failure (exit 1) unless every track and the cue match redump.
+// Command-line conventions: --manual, --drive VALUE, --serial VALUE, --retries=N, and
+// everything after a literal -- passed to `redumper disc`. DC specifics: a drive list of
+// GD-capable drives, transport-dependent read settings for drives redumper does not know
+// (SATA: C2; USB: no C2), skipping the empty area between the LD and HD areas, strict log
+// checks, and failure (exit 1) unless every track and the cue match redump.
 package main
 
 import (
@@ -341,10 +340,6 @@ func main() {
 	var notes []string
 	if gd {
 		notes = append(notes, fmt.Sprintf("Note: LD area dumped with %s (build %s), HD area with dreamdump (build %s).", rp.Binary, build, dreamBuild))
-	}
-	if rp.Exact {
-		notes = append(notes, fmt.Sprintf("Note: LD area dumped with redumper-exact (build %s) over USB, without C2.", build),
-			"      For a redump submission, state: "+exactDisclaimer)
 	}
 	if o.LDOnly {
 		notes = append(notes, "Note: LD area only — the HD area (track 3+) was not dumped.")

@@ -4,9 +4,9 @@ package main
 // dumped by dreamdump, see dreamdump.go). The drive-list entry gives the speed and, for
 // drives redumper does not know yet, the generic drive overrides and the sector order.
 // redumper b765 and later carry DH16D2S GD0D, so those settings are left to redumper
-// itself. For GD drives on USB, redumper-exact (upstream + PR superg/redumper#459, exact
-// READ CD transfer length) is used because the ASM1153 bridge corrupts non-multiple-of-4
-// transfers, and the sector order is still forced there because C2 cannot be transferred.
+// itself. The sector order is still forced off SATA, where the bridge cannot carry C2;
+// DATA_SUB works there because b767 and later request the exact READ CD transfer length,
+// and the ASM1153 bridge corrupts transfers whose length is not a multiple of 4.
 
 import (
 	"fmt"
@@ -21,12 +21,9 @@ import (
 
 type RunPlan struct {
 	Binary string
-	Exact  bool
 	Known  bool // the drive is in this redumper build's own database
 	Args   []string
 }
-
-const exactDisclaimer = "redumper upstream + PR superg/redumper#459 only: READ CD requests the exact transfer length; CDB, sector data, offsets and hashing are unchanged."
 
 // SplitArgs separates dcdump's own options from the passthrough to redumper
 // (space-separated values, --retries=N).
@@ -128,9 +125,6 @@ func ParseOptions(argv []string) Options {
 func BuildRun(d *Drive, o Options, sgPath, workDir, fullName string) RunPlan {
 	p := d.Profile
 	rp := RunPlan{Binary: "redumper"}
-	if p != nil && p.GD && d.Transport != "SATA" {
-		rp.Binary, rp.Exact = "redumper-exact", true
-	}
 	args := []string{"disc",
 		"--drive=" + sgPath,
 		"--image-path=" + workDir,
@@ -249,9 +243,6 @@ func EarlyAbortReason(p Progress) string {
 func (rp *RunPlan) Run() (string, string) {
 	path, err := findBinary(rp.Binary)
 	if err != nil {
-		if rp.Exact {
-			fatal("redumper-exact not found on PATH (needed for USB transport until PR superg/redumper#459 is released).")
-		}
 		fatal("redumper not found on PATH.")
 	}
 	build := redumperBuild(path)
@@ -259,9 +250,6 @@ func (rp *RunPlan) Run() (string, string) {
 	fmt.Printf("  %s (build: %s)\n", rp.Binary, build)
 	if rp.Known {
 		fmt.Println("  drive is in this redumper's database; its own settings are used")
-	}
-	if rp.Exact {
-		fmt.Println("  [!] " + exactDisclaimer)
 	}
 	fmt.Printf("  %s %s\n", rp.Binary, strings.Join(rp.Args, " "))
 	fmt.Println()

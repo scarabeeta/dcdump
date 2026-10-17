@@ -153,12 +153,12 @@ func TestProfilesAndArgs(t *testing.T) {
 	usb := &Drive{Transport: "USB", Profile: gd}
 	rp = BuildRun(usb, ParseOptions(nil), "/dev/sg5", "/w", "N")
 	j = strings.Join(rp.Args, " ")
-	if rp.Binary != "redumper-exact" || !rp.Exact || !strings.Contains(j, "--drive-sector-order=DATA_SUB") {
+	if rp.Binary != "redumper" || !strings.Contains(j, "--drive-sector-order=DATA_SUB") {
 		t.Errorf("usb args: %s %s", rp.Binary, j)
 	}
 	rp = BuildRun(usb, ParseOptions([]string{"--ld-only", "--retries=5"}), "/dev/sg5", "/w", "N")
 	j = strings.Join(rp.Args, " ")
-	if rp.Binary != "redumper-exact" || strings.Contains(j, "--rings") || !strings.Contains(j, "--retries=5") {
+	if rp.Binary != "redumper" || strings.Contains(j, "--rings") || !strings.Contains(j, "--retries=5") {
 		t.Errorf("ld-only args: %s %s", rp.Binary, j)
 	}
 	dp := BuildDreamRun(&Drive{SG: "/dev/sg8", Profile: gd}, ParseOptions([]string{"--retries=7"}), "/w", "N")
