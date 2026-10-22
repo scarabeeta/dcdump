@@ -36,8 +36,13 @@ func BuildDreamRun(d *Drive, o Options, workDir, fullName string) DreamPlan {
 		"--sector-order=" + dd.SectorOrder,
 		fmt.Sprintf("--read-offset=%d", dd.ReadOffset),
 		fmt.Sprintf("--read-at-once=%d", dd.ReadAtOnce),
-		"--retries=" + o.Retries,
 	}
+	// The HD area has its own speed, separate from the LD one given to redumper: some
+	// drives only read the HD area cleanly at a lower speed.
+	if dd.Speed > 0 {
+		args = append(args, fmt.Sprintf("--speed=%d", dd.Speed))
+	}
+	args = append(args, "--retries="+o.Retries)
 	return DreamPlan{Binary: "dreamdump", Dir: dir, Args: args}
 }
 

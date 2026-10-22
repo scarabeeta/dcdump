@@ -52,5 +52,69 @@
       "usb": "DATA_SUB",
       "sata": "DATA_C2_SUB"
     }
+  },
+  {
+    "id": "ts-h492c-gd24",
+    "description": "TSSTcorp TS-H492C with GD24+ firmware (readable spin-up state: refuses to dump the HD area if the disc came up in the bad state). LD at 4x: above that the read-ahead buffer fills, and GD1X-GD25 can return wrong sectors after a buffer-full cold start while GD26+ (stock resume) returns the subchannel 2 frames late",
+    "vendor": "^TSSTcorp$",
+    "model": "TS-H492C",
+    "rev": "^GD(2[4-9A-Z]|[3-9][0-9A-Z])$",
+    "gd": true,
+    "read_offset": 6,
+    "speed": 4,
+    "sector_order": {
+      "usb": "DATA_SUB",
+      "sata": "DATA_SUB_C2"
+    },
+    "hd_first_lba": 44854,
+    "dreamdump": {
+      "sector_order": "DATA_SUB_C2",
+      "read_offset": 6,
+      "read_at_once": 16,
+      "speed": 8
+    },
+    "state_check": "ts-h492c"
+  },
+  {
+    "id": "ts-h492c-gd1x",
+    "description": "TSSTcorp TS-H492C with GD1X-GD23 firmware (MT1685, HD track-3 pregap readable from LBA 44854; HD read at 8x). LD at 4x: GD1X can return wrong sectors after a buffer-full cold start at higher speeds",
+    "vendor": "^TSSTcorp$",
+    "model": "TS-H492C",
+    "rev": "^GD(1[X-Z]|2[0-3])$",
+    "gd": true,
+    "read_offset": 6,
+    "speed": 4,
+    "sector_order": {
+      "usb": "DATA_SUB",
+      "sata": "DATA_SUB_C2"
+    },
+    "hd_first_lba": 44854,
+    "dreamdump": {
+      "sector_order": "DATA_SUB_C2",
+      "read_offset": 6,
+      "read_at_once": 16,
+      "speed": 8
+    }
+  },
+  {
+    "id": "ts-h492c-gd1s",
+    "description": "TSSTcorp TS-H492C with GD1S-GD1V firmware (as GD1X, but the LD is read at 4x: above that these builds return the subchannel 2 frames late after a buffer-full resume)",
+    "vendor": "^TSSTcorp$",
+    "model": "TS-H492C",
+    "rev": "^GD1[STUV]$",
+    "gd": true,
+    "read_offset": 6,
+    "speed": 4,
+    "sector_order": {
+      "usb": "DATA_SUB",
+      "sata": "DATA_SUB_C2"
+    },
+    "hd_first_lba": 44854,
+    "dreamdump": {
+      "sector_order": "DATA_SUB_C2",
+      "read_offset": 6,
+      "read_at_once": 16,
+      "speed": 8
+    }
   }
 ]

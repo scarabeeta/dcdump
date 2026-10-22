@@ -30,6 +30,7 @@ type Profile struct {
 	SectorOrder map[string]string `json:"sector_order"`
 	HDFirstLBA  int               `json:"hd_first_lba"`
 	Dreamdump   *DreamParams      `json:"dreamdump"`
+	StateCheck  string            `json:"state_check"` // spin-up state check before the HD area ("" or "ts-h492c")
 
 	reVendor, reModel, reRev *regexp.Regexp
 }
@@ -39,6 +40,7 @@ type DreamParams struct {
 	SectorOrder string `json:"sector_order"`
 	ReadOffset  int    `json:"read_offset"`
 	ReadAtOnce  int    `json:"read_at_once"`
+	Speed       int    `json:"speed"` // dreamdump --speed (x CD speed); 0 = not passed
 }
 
 func (p *Profile) compile() error {
@@ -53,6 +55,9 @@ func (p *Profile) compile() error {
 	}
 	if p.GD && (p.HDFirstLBA == 0 || p.Dreamdump == nil || p.Dreamdump.SectorOrder == "" || p.Dreamdump.ReadAtOnce == 0) {
 		return fmt.Errorf("drive list entry %q: gd entries need hd_first_lba and dreamdump {sector_order, read_offset, read_at_once}", p.ID)
+	}
+	if p.StateCheck != "" && p.StateCheck != "ts-h492c" {
+		return fmt.Errorf("drive list entry %q: unknown state_check %q", p.ID, p.StateCheck)
 	}
 	return nil
 }

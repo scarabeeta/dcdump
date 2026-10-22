@@ -166,6 +166,83 @@ func TestProfilesAndArgs(t *testing.T) {
 	if dp.Dir != "/w/dreamdump" || j != "disc --drive=/dev/sg8 --image-path=/w/dreamdump --image-name=N --sector-order=DATA_C2_SUB --read-offset=6 --read-at-once=16 --retries=7" {
 		t.Errorf("dreamdump args: %s", j)
 	}
+
+	h := match("TSSTcorp", "CDRWDVD TS-H492C", "GD1S")
+	if h == nil || h.ID != "ts-h492c-gd1s" || !h.GD || h.HDFirstLBA != 44854 || h.Dreamdump == nil || h.Dreamdump.Speed != 8 {
+		t.Fatalf("TS-H492C GD1S should use the ts-h492c-gd1s entry: %+v", h)
+	}
+	for _, r := range []string{"GD1T", "GD1U", "GD1V"} {
+		if p := match("TSSTcorp", "CDRWDVD TS-H492C", r); p == nil || p.ID != "ts-h492c-gd1s" {
+			t.Errorf("%s should use the ts-h492c-gd1s entry: %+v", r, p)
+		}
+	}
+	x := match("TSSTcorp", "CDRWDVD TS-H492C", "GD1X")
+	if x == nil || x.ID != "ts-h492c-gd1x" || x.Speed != 4 || x.HDFirstLBA != 44854 || x.Dreamdump == nil || x.Dreamdump.Speed != 8 {
+		t.Fatalf("TS-H492C GD1X should use the ts-h492c-gd1x entry: %+v", x)
+	}
+	for _, r := range []string{"GD1Y", "GD1Z", "GD20"} {
+		if p := match("TSSTcorp", "CDRWDVD TS-H492C", r); p == nil || p.ID != "ts-h492c-gd1x" {
+			t.Errorf("%s should use the ts-h492c-gd1x entry: %+v", r, p)
+		}
+	}
+	if rp := BuildRun(&Drive{Transport: "SATA", Profile: x}, ParseOptions(nil), "/dev/sg6", "/w", "N"); !strings.Contains(strings.Join(rp.Args, " "), "--speed=4") {
+		t.Errorf("TS-H492C GD1X must read the LD at 4x (GD1X cold-start bug above that): %v", rp.Args)
+	}
+	for _, r := range []string{"DE02", "DE04", "GD09", "GD1N", "GD1R", "GD1W", "DG12"} {
+		if p := match("TSSTcorp", "CDRWDVD TS-H492C", r); p != nil {
+			t.Errorf("TS-H492C %s should not be listed: %v", r, p.ID)
+		}
+	}
+	dp = BuildDreamRun(&Drive{SG: "/dev/sg6", Profile: h}, ParseOptions(nil), "/w", "N")
+	j = strings.Join(dp.Args, " ")
+	if j != "disc --drive=/dev/sg6 --image-path=/w/dreamdump --image-name=N --sector-order=DATA_SUB_C2 --read-offset=6 --read-at-once=16 --speed=8 --retries=20" {
+		t.Errorf("TS-H492C dreamdump args: %s", j)
+	}
+	rp = BuildRun(&Drive{Transport: "SATA", Profile: h}, ParseOptions(nil), "/dev/sg6", "/w", "N")
+	j = strings.Join(rp.Args, " ")
+	if !strings.Contains(j, "--speed=4") || !strings.Contains(j, "--drive-read-offset=6") || !strings.Contains(j, "--drive-sector-order=DATA_SUB_C2") {
+		t.Errorf("TS-H492C redumper args: %s", j)
+	}
+	for _, r := range []string{"GD21", "GD23"} {
+		if p := match("TSSTcorp", "CDRWDVD TS-H492C", r); p == nil || p.ID != "ts-h492c-gd1x" || p.StateCheck != "" {
+			t.Errorf("%s has no state byte and should use the ts-h492c-gd1x entry: %+v", r, p)
+		}
+	}
+	for _, r := range []string{"GD24", "GD2A", "GD30"} {
+		p := match("TSSTcorp", "CDRWDVD TS-H492C", r)
+		if p == nil || p.ID != "ts-h492c-gd24" || p.StateCheck != "ts-h492c" || p.Speed != 4 || p.Dreamdump == nil || p.Dreamdump.Speed != 8 {
+			t.Errorf("%s should use the ts-h492c-gd24 entry with the state check: %+v", r, p)
+		}
+	}
+}
+
+func TestH492CState(t *testing.T) {
+	for _, c := range []struct {
+		status byte
+		good   bool
+	}{
+		{0x00, false}, // not written (no spin-up yet, or firmware without the byte)
+		{0x80, false}, // stock pressed-CD path: the bad state
+		{0x81, true},  // low-level path by the level probe
+		{0x83, true},  // low-level path after promotion
+		{0x87, false}, // promoted attempt failed
+		{0x89, false}, // spin-up failed
+		{0x01, false}, // not valid
+	} {
+		if g := DecodeH492CState(c.status, 0x4C).Good(); g != c.good {
+			t.Errorf("status 0x%02X: good=%v, want %v", c.status, g, c.good)
+		}
+	}
+	if s := DecodeH492CState(0x83, 0x4C).String(); s != "status 0x83, spin-up level 0x4C, low-level path (promoted)" {
+		t.Errorf("String: %q", s)
+	}
+	if _, bad := CheckDriveState(nil, &Profile{}); bad != "" {
+		t.Errorf("no state_check must not check anything: %s", bad)
+	}
+	p := &Profile{ID: "x", Vendor: ".", Model: ".", Rev: ".", StateCheck: "other"}
+	if err := p.compile(); err == nil {
+		t.Errorf("an unknown state_check must be rejected")
+	}
 }
 
 func TestDatVersion(t *testing.T) {

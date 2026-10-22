@@ -170,6 +170,12 @@ func (d *SCSIDevice) AllowMediumRemoval() Sense {
 	return s
 }
 
+// SetCDSpeed sets the read speed in KB/s (1x = 176), write speed left at the maximum.
+func (d *SCSIDevice) SetCDSpeed(kbps int) Sense {
+	_, s := d.exec([]byte{0xBB, 0, byte(kbps >> 8), byte(kbps), 0xFF, 0xFF, 0, 0, 0, 0, 0, 0}, 0, nil, 10*time.Second)
+	return s
+}
+
 type TOCTrack struct {
 	Number  int // 0xAA = lead-out
 	Control byte

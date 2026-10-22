@@ -147,7 +147,34 @@ func preflight(d *Drive, ldOnly bool) (int, *IPBin) {
 		if leadout >= d.Profile.HDFirstLBA {
 			fatal(fmt.Sprintf("LD lead-out %d is not below the HD area (%d): not a GD-ROM layout.", leadout, d.Profile.HDFirstLBA))
 		}
-		buf, s := dev.ReadCDRaw(d.Profile.HDFirstLBA, 1)
+		if line, bad := CheckDriveState(dev, d.Profile); line != "" || bad != "" {
+			if line != "" {
+				fmt.Println(line)
+			}
+			if bad != "" {
+				fatal(bad)
+			}
+		}
+		// Check the HD area at the speed dreamdump will read it at: a drive that needs a lower
+		// HD speed can fail this single read at its default (maximum) speed.
+		if dd := d.Profile.Dreamdump; dd != nil && dd.Speed > 0 {
+			if s := dev.SetCDSpeed(dd.Speed * 176); !s.OK {
+				fmt.Printf("  [!] SET CD SPEED %dx failed (%s)\n", dd.Speed, s)
+			}
+		}
+		// On TS-H492C builds before GD1Z the first HD read after a disc load could fail (servo
+		// left uncalibrated at spin-up); the dump itself retries, so give the check a few attempts too.
+		var buf []byte
+		var s Sense
+		for try := 1; try <= 3; try++ {
+			buf, s = dev.ReadCDRaw(d.Profile.HDFirstLBA, 1)
+			if s.OK && bytes.Contains(buf, syncPattern) {
+				break
+			}
+			if try < 3 {
+				fmt.Printf("  HD area check: LBA %d attempt %d failed (%s), retrying\n", d.Profile.HDFirstLBA, try, s)
+			}
+		}
 		if !s.OK || !bytes.Contains(buf, syncPattern) {
 			if s.OK {
 				fatal(fmt.Sprintf("HD area check: LBA %d returned no sector sync.", d.Profile.HDFirstLBA))
