@@ -54,11 +54,33 @@
     }
   },
   {
-    "id": "ts-h492c-gd24",
-    "description": "TSSTcorp TS-H492C with GD24+ firmware (readable spin-up state: refuses to dump the HD area if the disc came up in the bad state). LD at 4x: above that the read-ahead buffer fills, and GD1X-GD25 can return wrong sectors after a buffer-full cold start while GD26+ (stock resume) returns the subchannel 2 frames late",
+    "id": "ts-h492c-gd2c",
+    "description": "TSSTcorp TS-H492C with GD2C+ firmware: no read-ahead resume (cold start when the buffer drains, so the subchannel stays aligned), buffer owner check, GD spindle capped at 20x by the firmware. LD at full speed; HD at 20x (above that the HD read hangs)",
     "vendor": "^TSSTcorp$",
     "model": "TS-H492C",
-    "rev": "^GD(2[4-9A-Z]|[3-9][0-9A-Z])$",
+    "rev": "^GD(2[C-Z]|[3-9][0-9A-Z])$",
+    "gd": true,
+    "read_offset": 6,
+    "speed": 0,
+    "sector_order": {
+      "usb": "DATA_SUB",
+      "sata": "DATA_SUB_C2"
+    },
+    "hd_first_lba": 44854,
+    "dreamdump": {
+      "sector_order": "DATA_SUB_C2",
+      "read_offset": 6,
+      "read_at_once": 16,
+      "speed": 20
+    },
+    "state_check": "ts-h492c"
+  },
+  {
+    "id": "ts-h492c-gd24",
+    "description": "TSSTcorp TS-H492C with GD24-GD2B firmware (readable spin-up state: refuses to dump the HD area if the disc came up in the bad state). LD at 4x: above that the read-ahead buffer fills, and GD1X-GD25 can return wrong sectors after a buffer-full cold start while GD26+ (stock resume) returns the subchannel 2 frames late",
+    "vendor": "^TSSTcorp$",
+    "model": "TS-H492C",
+    "rev": "^GD2[4-9AB]$",
     "gd": true,
     "read_offset": 6,
     "speed": 4,

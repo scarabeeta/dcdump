@@ -208,11 +208,20 @@ func TestProfilesAndArgs(t *testing.T) {
 			t.Errorf("%s has no state byte and should use the ts-h492c-gd1x entry: %+v", r, p)
 		}
 	}
-	for _, r := range []string{"GD24", "GD2A", "GD30"} {
+	for _, r := range []string{"GD24", "GD2A", "GD2B"} {
 		p := match("TSSTcorp", "CDRWDVD TS-H492C", r)
 		if p == nil || p.ID != "ts-h492c-gd24" || p.StateCheck != "ts-h492c" || p.Speed != 4 || p.Dreamdump == nil || p.Dreamdump.Speed != 8 {
 			t.Errorf("%s should use the ts-h492c-gd24 entry with the state check: %+v", r, p)
 		}
+	}
+	for _, r := range []string{"GD2C", "GD2Z", "GD30"} {
+		p := match("TSSTcorp", "CDRWDVD TS-H492C", r)
+		if p == nil || p.ID != "ts-h492c-gd2c" || p.StateCheck != "ts-h492c" || p.Speed != 0 || p.Dreamdump == nil || p.Dreamdump.Speed != 20 {
+			t.Errorf("%s should use the ts-h492c-gd2c entry (LD full speed, HD 20x): %+v", r, p)
+		}
+	}
+	if p := match("TSSTcorp", "CDRWDVD TS-H492C", "DG6A"); p != nil {
+		t.Errorf("test build DG6A should match no entry: %+v", p)
 	}
 }
 
