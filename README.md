@@ -1,6 +1,6 @@
 # dcdump
 
-<https://github.com/wakasio/dcdump>
+<https://github.com/scarabeeta/dcdump>
 
 Dumps a Dreamcast GD-ROM with one command. The reading is done by two existing tools:
 [redumper](https://github.com/superg/redumper) for the low-density area,
@@ -14,7 +14,7 @@ A hash that does not match means exit 1.
 Needs Linux, Go 1.26+, and redumper b767 or later plus dreamdump on `PATH`.
 
 ```
-go install github.com/wakasio/dcdump@latest
+go install github.com/scarabeeta/dcdump@latest
 ```
 
 From a checkout: `make` builds a static binary, `make deploy HOST=...` copies it to the
